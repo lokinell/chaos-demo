@@ -1,0 +1,17 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: StressChaos
+metadata:
+  name: java-cpu-stress
+  namespace: demo
+spec:
+  mode: one
+  selector:
+    namespaces:
+      - demo
+    labelSelectors:
+      app: java-service
+  stressors:
+    cpu:
+      workers: 2
+      load: 100
+  duration: '5m' 

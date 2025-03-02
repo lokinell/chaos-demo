@@ -1,0 +1,14 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: PodChaos
+metadata:
+  name: java-pod-kill
+  namespace: demo
+spec:
+  action: pod-kill
+  mode: one
+  selector:
+    namespaces:
+      - demo
+    labelSelectors:
+      app: java-service
+  gracePeriod: 0 
