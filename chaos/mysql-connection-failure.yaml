@@ -13,6 +13,7 @@ spec:
       app: web-service
   direction: to
   target:
+    mode: one
     selector:
       namespaces:
         - demo

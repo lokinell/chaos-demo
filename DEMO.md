@@ -50,13 +50,7 @@ curl http://localhost:5000/v2/_catalog
    - 检查防火墙设置
    - 尝试使用 `curl -v http://localhost:5000/v2/_catalog` 获取详细错误信息
 
-5. **OrbStack 特定问题**：
-   - 在 OrbStack 的 Kubernetes 中，Pod 无法直接访问 localhost
-   - 需要使用 `registry.orb.local:5000` 替代 `localhost:5000` 来访问本地 Registry
-   - 确保在 Kubernetes 部署文件中使用了正确的地址
-   - 如果遇到镜像拉取问题，检查 Pod 的事件：`kubectl -n demo describe pod <pod-name>`
-
-6. **手动测试 Registry**：
+5. **手动测试 Registry**：
    - 尝试推送测试镜像：
      ```bash
      docker pull hello-world
@@ -65,7 +59,7 @@ curl http://localhost:5000/v2/_catalog
      ```
    - 如果推送成功，再次检查 `curl http://localhost:5000/v2/_catalog`
 
-7. **重启 Docker**：
+6. **重启 Docker**：
    - 如果以上步骤都不能解决问题，尝试重启 Docker 服务
 
 ### [安装 Chaos Mesh](https://chaos-mesh.org/zh/docs/production-installation-using-helm/)
