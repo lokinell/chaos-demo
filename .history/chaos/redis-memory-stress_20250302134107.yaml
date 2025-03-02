@@ -1,0 +1,17 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: StressChaos
+metadata:
+  name: redis-memory-stress
+  namespace: demo
+spec:
+  mode: one
+  selector:
+    namespaces:
+      - demo
+    labelSelectors:
+      app: redis
+  stressors:
+    memory:
+      workers: 4
+      size: '256MB'
+  duration: '5m' 

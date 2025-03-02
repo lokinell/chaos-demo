@@ -1,0 +1,21 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: NetworkChaos
+metadata:
+  name: mysql-connection-failure
+  namespace: demo
+spec:
+  action: partition
+  mode: one
+  selector:
+    namespaces:
+      - demo
+    labelSelectors:
+      app: web-service
+  direction: to
+  target:
+    selector:
+      namespaces:
+        - demo
+      labelSelectors:
+        app: mysql
+  duration: '5m' 
