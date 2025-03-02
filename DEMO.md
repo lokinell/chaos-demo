@@ -299,6 +299,88 @@ kubectl logs -f deployment/web-service -n demo
 kubectl delete -f chaos/network-emulation.yaml
 ```
 
+### 5. JVM 应用故障测试
+
+#### 5.1 JVM 异常注入测试
+
+1. 向 Java 应用注入异常：
+
+```bash
+kubectl apply -f chaos/jvm-exception-injection.yaml
+```
+
+2. 观察应用行为：
+
+```bash
+kubectl logs -f deployment/web-service -n demo
+```
+
+3. 清理测试：
+
+```bash
+kubectl delete -f chaos/jvm-exception-injection.yaml
+```
+
+#### 5.2 JVM GC 压力测试
+
+1. 模拟 JVM 垃圾回收压力：
+
+```bash
+kubectl apply -f chaos/jvm-gc-stress.yaml
+```
+
+2. 观察应用行为和性能指标：
+
+```bash
+kubectl logs -f deployment/web-service -n demo
+```
+
+3. 清理测试：
+
+```bash
+kubectl delete -f chaos/jvm-gc-stress.yaml
+```
+
+#### 5.3 JVM 方法延迟测试
+
+1. 为特定 Java 方法添加延迟：
+
+```bash
+kubectl apply -f chaos/jvm-method-latency.yaml
+```
+
+2. 观察应用响应时间：
+
+```bash
+kubectl logs -f deployment/web-service -n demo
+```
+
+3. 清理测试：
+
+```bash
+kubectl delete -f chaos/jvm-method-latency.yaml
+```
+
+#### 5.4 JVM 方法返回值修改测试
+
+1. 修改特定 Java 方法的返回值：
+
+```bash
+kubectl apply -f chaos/jvm-return-value-modification.yaml
+```
+
+2. 观察应用行为：
+
+```bash
+kubectl logs -f deployment/web-service -n demo
+```
+
+3. 清理测试：
+
+```bash
+kubectl delete -f chaos/jvm-return-value-modification.yaml
+```
+
 ## 测试结果分析
 
 每次测试后，我们需要分析以下指标：
